@@ -1,0 +1,13 @@
+package p025p0;
+
+import android.graphics.Matrix;
+import android.graphics.Path;
+
+/* JADX INFO: loaded from: classes.dex */
+public abstract class r {
+
+    /* JADX INFO: renamed from: a, reason: collision with root package name */
+    public final Matrix f3997a = new Matrix();
+
+    public abstract void a(Matrix matrix, Path path);
+}
