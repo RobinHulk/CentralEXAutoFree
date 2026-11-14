@@ -66,4 +66,6 @@ La fuente de referencia para reconstruir la APK de prueba es `apktool-test-src/`
 java -jar apktool_2.11.0.jar b apktool-test-src -o build/TeroCentralFree-unsigned.apk
 ```
 
-Firma localmente con una clave de desarrollo propia antes de instalar. No se incluyen APKs compiladas ni keystores privados.
+El proyecto Android Studio requiere Android SDK 35 y Android Gradle Plugin 8.7.2. Configura `local.properties` en tu equipo; este archivo se excluye del control de versiones. Firma el APK localmente con una clave de desarrollo propia. No se incluyen claves privadas ni APKs compiladas en el árbol de fuentes.
+
+La variante Tero incorpora una opción para importar las SharedPreferences de EX Sapo Central, incluidas las áreas de almacenamiento normal y protegido. Después aplica los modos de conducción/regeneración e inicia un proceso limpio para recargar las preferencias.

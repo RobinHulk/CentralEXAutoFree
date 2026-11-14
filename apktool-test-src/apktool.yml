@@ -12,8 +12,8 @@ packageInfo:
   forcedPackageId: 127
   renameManifestPackage: null
 versionInfo:
-  versionCode: 674
-  versionName: 2.19.78
+  versionCode: 679
+  versionName: 2.19.78-Tero5
 sharedLibrary: false
 sparseResources: false
 compactEntries: false

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EX Sapo Central</string>
+    <string name="app_name">Tero Central Free</string>
     <string name="blackout_floater_channel">Black screen (floater)</string>
     <string name="blackout_floater_notif">Black screen bubble active</string>
     <string name="btn_search_central_update">Check for Central Auto Update</string>

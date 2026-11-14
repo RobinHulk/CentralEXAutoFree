@@ -1,0 +1,49 @@
+# Guía de modificaciones de Tero Central Free
+
+## Finalidad
+
+Esta lista documenta los cambios que se aplicaron al fork de EX Sapo Central para poder volver a reproducirlos al decompilar y adaptar una versión nueva. Debe usarse como checklist de portabilidad: revisar cada punto contra el código nuevo, reaplicar el cambio correspondiente y probarlo en el emulador y, cuando dependa de funciones del vehículo, en el head unit.
+
+La fuente de referencia actual es `ultimaFree78/apktool-test-src`. La variante más reciente construida durante este trabajo es `ultimaFree78/apktool-test/TeroCentralFree-2.19.78-Tero5.apk`.
+
+## Cambios aplicados
+
+1. **Identidad del fork y convivencia con la app original.** Se cambió el `applicationId` del manifiesto de `com.ex.auto` a `com.robihulk.terucentralfree` y el nombre visible a `Tero Central Free`. Esto permite instalar Tero junto a EX Sapo Central y mantiene sus datos privados separados. Al portar, actualizar también las autoridades y permisos del manifiesto que deban ser únicos por paquete. Las clases internas siguen bajo `com.ex.auto`; no renombrar ese espacio de clases sin migrar todas sus referencias.
+
+2. **Firma y permisos de instalación.** Tero se firma con la clave local de desarrollo disponible en el entorno de compilación; no se encontró la clave privada original. Por eso no puede actualizar la instalación original como si tuviera la misma firma: debe conservar su ID de paquete propio para coexistir. Revisar los permisos especiales y de sistema en el head unit al instalar la nueva variante.
+
+3. **Eliminación del bloqueo por caducidad al abrir.** Se quitó del flujo de `MainActivity.onResume()` la comprobación remota/de caducidad que mostraba el aviso y forzaba la actualización. Se mantuvo el trabajo normal de ciclo de vida de `onResume()` (actualización de estado, receptores y tareas periódicas); al portar, no reemplazar el método entero por uno vacío.
+
+   **Relación con las propiedades de Home:** la eliminación del bloqueo quedó asociada a una regresión observada: dejaron de mostrarse propiedades como el voltaje de batería y el espacio libre del head unit. Al adaptar otra versión, hay que eliminar solamente la rama que decide caducidad y muestra/impone el aviso de actualización. Se deben conservar la suscripción al ciclo de vida, el registro de receptores, el `Handler` y las llamadas que refrescan la interfaz. En la fuente actual, el `onResume()` funcional hace `post(T)`, luego llama a `v1()`, `a1()`, `w1()`, `e1()`, `j1(null, null)`, `f1()` e `i1(this)`; esas llamadas y sus dependencias no se deben borrar al quitar la validación. `e1()` agenda trabajo en el `ExecutorService`, así que también hay que conservar la tarea que consulta y publica propiedades del vehículo. Después de portar, confirmar desde el layout y los callbacks qué rutina concreta alimenta los campos de voltaje y almacenamiento, y que ninguna queda detrás de un `return`/`else` de expiración. Validar ambas tarjetas en el head unit real.
+
+4. **Imagen de la pantalla principal.** Se sustituyó la ilustración original del sapo en el auto por la imagen nueva del auto Geely con la mascota. Se ajustó el tamaño/área visible para ocupar el espacio de la ilustración anterior y mantenerla centrada, evitando que cubra toda la pantalla. Reaplicar el recurso y revisar el encuadre en la resolución objetivo.
+
+5. **Enlace de GitHub en Home.** Se reemplazó la referencia a Instagram por `github.com/robinhulk` y su icono de GitHub en la pantalla principal.
+
+6. **Icono de inicio en la lista de aplicaciones.** Se sustituyó el icono que aparece en el launcher/lista de apps usando `@mipmap/ic_launcher` y `@mipmap/ic_launcher_round`. En la primera versión la mascota quedaba demasiado pequeña dentro del lienzo; se ajustó el recorte/escala para ampliar la figura y ocupar mejor el área segura del icono sin cortar el auto ni la mascota. Al portar, revisar todas las densidades y el adaptive icon: reemplazar solo una imagen puede dejar recursos antiguos o una figura pequeña en algunos launchers.
+
+7. **Icono de aplicaciones recientes y activas.** Se actualizó por separado el recurso que Android muestra en la tarjeta de tareas recientes/actividad en curso, para que también use la identidad de Tero y no conserve el sapo. Este icono puede venir de `android:icon` de la actividad/tarea o de un `ActivityManager.TaskDescription` configurado en código; revisar ambos lugares y comprobar la vista de Recientes en el dispositivo. No confundirlo con el icono pequeño monocromo de las notificaciones.
+
+8. **Importación de configuración desde EX Sapo Central.** Se agregó en el panel derecho de Home el botón discreto “Importar ajustes de EX Sapo Central”. La tarea copia todos los XML de preferencias compartidas de `com.ex.auto` hacia el paquete Tero, tanto en almacenamiento CE como DE, para el usuario Android activo; no se limita al modo de conducción. Requiere que la app original tenga sus datos presentes y que el mecanismo privilegiado usado por el head unit permita leer/copiar esos archivos.
+
+9. **Aplicación de ajustes importados y recarga completa.** Después de copiar, se extraen/aplican también `saved_drive` y `saved_regen`, se vuelve a ejecutar la lectura/aplicación de modos y se reinicia en frío el proceso de Tero para que los demás ajustes se vuelvan a cargar desde disco. Al portar, conservar la secuencia posterior a la copia, no solo la copia de archivos.
+
+10. **Estado de batería y almacenamiento en Home.** Se conservó/restauró la lógica normal de `onResume()` y las rutinas que consultan/actualizan las tarjetas de estado para evitar la regresión descrita en el punto 3. El espacio libre se pudo mostrar en el emulador; la lectura de batería de 12 V necesita validación en el vehículo, ya que el emulador no expone necesariamente esa propiedad.
+
+11. **Pantalla Apps: color del desplegable.** Se cambió el layout del adaptador del combo que lista APKs para que el texto de las opciones sea negro y legible sobre el fondo claro. Se debe conservar el recurso/layout válido usado por ambas vistas del adaptador.
+
+12. **Pantalla Apps: corrección del cierre.** Se corrigió la referencia de recurso inválida que provocaba `Resources$NotFoundException` al abrir Apps y se apuntaron ambos adaptadores al layout existente. La pantalla Apps se abrió correctamente después del arreglo.
+
+13. **Actualización de versión sin el antiguo aviso de vencimiento.** El fork conserva su flujo normal para otras funciones, pero se retiró la validación que bloqueaba el inicio por la caducidad de la versión original. Antes de portar, revisar las rutinas de actualización para distinguir el aviso de expiración de las funciones de descarga que todavía se necesiten.
+
+14. **Construcción y entrega del APK.** La fuente decompilada se recompila con Apktool 2.11 y Java 23 y luego se firma con la clave local de desarrollo. El APK Tero5 quedó en `ultimaFree78/apktool-test/TeroCentralFree-2.19.78-Tero5.apk`. La clave original no está en el repositorio, por lo que no es posible producir una firma idéntica a la de EX Sapo Central.
+
+15. **Desactivar actualización automática por defecto.** En la última pantalla de ajustes, dejar apagada (`off`) la opción de actualización automática. Al portar, ubicar el `Switch` y su preferencia asociada, cambiar el valor predeterminado a `false` y confirmar que la interfaz aparezca apagada en una instalación limpia.
+
+## Validaciones pendientes al portar
+
+- Confirmar que la importación puede leer las preferencias originales en el head unit real y que se copian también ajustes distintos de los modos de conducción/regeneración.
+- Verificar que todos los ajustes importados se reflejan después del reinicio en frío.
+- Comprobar los valores de batería y almacenamiento en el vehículo.
+- Revisar permisos, autoridades, iconos, pantallas y recursos en la nueva versión; los IDs numéricos de recursos pueden cambiar al recompilar.
+- Confirmar qué comprobaciones de caducidad o bloqueo siguen presentes en servicios ajenos a `MainActivity.onResume()` antes de eliminar o conservarlas. Esta guía solo afirma el cambio confirmado en el flujo de inicio.

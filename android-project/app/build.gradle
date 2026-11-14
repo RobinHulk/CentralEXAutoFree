@@ -7,12 +7,12 @@ android {
     compileSdkVersion 35
 
     defaultConfig {
-        applicationId 'com.ex.auto'
+        applicationId 'com.robihulk.terucentralfree'
         minSdkVersion 28
         //noinspection ExpiringTargetSdkVersion,ExpiredTargetSdkVersion
         targetSdkVersion 29
-        versionCode 674
-        versionName "2.19.78"
+        versionCode 679
+        versionName "2.19.78-Tero5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

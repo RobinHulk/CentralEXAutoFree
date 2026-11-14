@@ -2380,7 +2380,7 @@
 
     invoke-static {v0, p0}, LI0/f;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string p0, "content://com.ex.auto.mediabridge.artwork/"
+    const-string p0, "content://com.robihulk.terucentralfree.mediabridge.artwork/"
 
     invoke-virtual {p0, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
 

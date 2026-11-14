@@ -7713,11 +7713,11 @@
     :goto_1
     new-instance v0, Landroid/widget/ArrayAdapter;
 
-    const v1, 0x1090008
+    const v1, 0x7f0c0059
 
     invoke-direct {v0, p0, v1, p2}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;ILjava/util/List;)V
 
-    const p2, 0x1090009
+    const p2, 0x7f0c0059
 
     invoke-virtual {v0, p2}, Landroid/widget/ArrayAdapter;->setDropDownViewResource(I)V
 
@@ -18407,9 +18407,75 @@
 .end method
 
 .method public final onResume()V
-    .locals 0
+    .locals 5
 
     invoke-super {p0}, Le/j;->onResume()V
+
+    new-instance v0, Landroid/content/IntentFilter;
+
+    const-string v1, "com.ex.auto.wifimanager.STATUS_UPDATE"
+
+    invoke-direct {v0, v1}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/ex/auto/MainActivity;->U:LT/q3;
+
+    invoke-virtual {p0, v1, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+
+    new-instance v0, Landroid/content/IntentFilter;
+
+    const-string v1, "com.ex.auto.AUTO_PROXY_APPLIED"
+
+    invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
+
+    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+
+    const-string v1, "com.ex.auto.AUTO_ROUTE_APPLIED"
+
+    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+
+    const-string v1, "com.ex.auto.USB_WATCHDOG_APPLIED"
+
+    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/ex/auto/MainActivity;->l0:LT/q3;
+
+    invoke-virtual {p0, v1, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+
+    new-instance v0, Landroid/content/IntentFilter;
+
+    const-string v1, "com.ex.auto.PHONE_SYNC_APPLIED"
+
+    invoke-direct {v0, v1}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/ex/auto/MainActivity;->R:LT/q3;
+
+    invoke-virtual {p0, v1, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/ex/auto/MainActivity;->I:Z
+
+    iget-object v0, p0, Lcom/ex/auto/MainActivity;->v:Landroid/os/Handler;
+
+    iget-object v1, p0, Lcom/ex/auto/MainActivity;->T:LB/b;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->v1()V
+
+    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->a1()V
+
+    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->w1()V
+
+    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->e1()V
+
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0, v0}, Lcom/ex/auto/MainActivity;->j1(Ljava/lang/Integer;Ljava/lang/Integer;)V
+
+    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->f1()V
+
+    invoke-static {p0}, Lcom/ex/auto/MainActivity;->i1(Lcom/ex/auto/MainActivity;)V
 
     return-void
 .end method
@@ -22239,6 +22305,42 @@
     check-cast v0, Landroid/content/SharedPreferences;
 
     return-object v0
+.end method
+
+.method public final refreshImportedModes()V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0, v0}, Lcom/ex/auto/MainActivity;->j1(Ljava/lang/Integer;Ljava/lang/Integer;)V
+
+    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->Y0()V
+
+    return-void
+.end method
+
+.method public final importOriginalConfiguration(Landroid/view/View;)V
+    .locals 3
+
+    new-instance v0, LT/ImportOriginalConfigTask;
+
+    invoke-direct {v0, p0}, LT/ImportOriginalConfigTask;-><init>(Lcom/ex/auto/MainActivity;)V
+
+    iget-object v1, p0, Lcom/ex/auto/MainActivity;->w:Ljava/util/concurrent/ExecutorService;
+
+    invoke-interface {v1, v0}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+
+    const-string v0, "Importando ajustes de EX Sapo Central..."
+
+    const/4 v1, 0x0
+
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    return-void
 .end method
 
 .method public final z1()V

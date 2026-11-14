@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EX Sapo Central</string>
+    <string name="app_name">Tero Central Free</string>
     <string name="blackout_floater_channel">Pantalla negra (floater)</string>
     <string name="blackout_floater_notif">Burbuja de la pantalla negra activa</string>
     <string name="btn_search_central_update">Buscar Actualización de Central Auto</string>
