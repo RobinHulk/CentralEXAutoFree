@@ -110,3 +110,17 @@ java.exe -jar 'F:\dev\codex\Teru\ultimaFree78\tools\apktool\apktool_2.11.0.jar' 
 ```
 
 Firmar el APK localmente con `apksigner` y la clave de depuración del equipo; no guardar contraseñas ni keystore en el repositorio.
+
+## Cierre de sesión (14-11-2026)
+
+- Repositorio publicado: `https://github.com/RobinHulk/SapoCentralEXAutoFree` (rama `main`). El checkout de trabajo es `F:\dev\codex\Teru\TeroCentralFree`; el directorio raíz `F:\dev\codex\Teru` no es un repositorio Git.
+- La rama remota `main` conserva el historial y contenido que ya existía. Se agregó el árbol de fuentes de Tero y la documentación como historia integrada, sin force-push.
+- Último commit verificado en GitHub: `57fc325` (`Document Tero image resource links`). El commit `88392ac` agregó el árbol de fuentes y documentación Tero al repositorio existente.
+- La guía de portabilidad está en `guia_modificacion.md`, tanto en la raíz del proyecto como en el repositorio. Ambas copias se sincronizaron. Incluye los cambios numerados y la finalidad de reproducirlos al portar una versión nueva.
+- Enlaces de recursos que quedaron en la guía:
+  - Fondo de Home: `https://github.com/RobinHulk/SapoCentralEXAutoFree/blob/main/apktool-test-src/res/drawable-nodpi/sapo.png`
+  - Primer plano del icono de la app (densidad xxxhdpi; también copiar las otras densidades y el fondo/adaptive icon): `https://github.com/RobinHulk/SapoCentralEXAutoFree/blob/main/apktool-test-src/res/mipmap-xxxhdpi/ic_launcher_foreground.png`
+  - Icono de Recientes/actividad activa: `https://github.com/RobinHulk/SapoCentralEXAutoFree/blob/main/apktool-test-src/AndroidManifest.xml#L40-L41`. `MainActivity` usa `@mipmap/ic_launcher`; no existe un PNG aparte de Recientes. `sapo_icon.png` es para notificaciones.
+- La guía incluye como checklist dejar apagada por defecto la actualización automática en la última pantalla de ajustes. Esto quedó documentado como instrucción de portabilidad; no se verificó aquí un cambio del valor por defecto en el código de la aplicación.
+- El acceso GitHub mediante `gh` reportó un token inválido, aunque el push Git por HTTPS sí se completó. Para publicar actualizaciones posteriores, apuntar a `https://github.com/RobinHulk/SapoCentralEXAutoFree.git`; en este checkout la rama local usada es `integrate-tero` y se publica a `main`.
+- Queda pendiente validar en el head unit real la importación completa de preferencias y el voltaje de batería de 12 V. En el AVD solo se confirmó el espacio libre; no exponer ese dato del vehículo es una limitación del emulador.
