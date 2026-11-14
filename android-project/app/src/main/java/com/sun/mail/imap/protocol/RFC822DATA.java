@@ -1,0 +1,39 @@
+package com.sun.mail.imap.protocol;
+
+import com.sun.mail.iap.ByteArray;
+import java.io.ByteArrayInputStream;
+
+/* JADX INFO: loaded from: classes.dex */
+public class RFC822DATA implements Item {
+    static final char[] name = {'R', 'F', 'C', '8', '2', '2'};
+    private final ByteArray data;
+    private final boolean isHeader;
+    private final int msgno;
+
+    public RFC822DATA(FetchResponse fetchResponse) {
+        this(fetchResponse, false);
+    }
+
+    public ByteArray getByteArray() {
+        return this.data;
+    }
+
+    public ByteArrayInputStream getByteArrayInputStream() {
+        ByteArray byteArray = this.data;
+        if (byteArray != null) {
+            return byteArray.toByteArrayInputStream();
+        }
+        return null;
+    }
+
+    public boolean isHeader() {
+        return this.isHeader;
+    }
+
+    public RFC822DATA(FetchResponse fetchResponse, boolean z2) {
+        this.isHeader = z2;
+        this.msgno = fetchResponse.getNumber();
+        fetchResponse.skipSpaces();
+        this.data = fetchResponse.readByteArray();
+    }
+}

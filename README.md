@@ -56,3 +56,14 @@ O desenvolvedor pode ser contactado pelos grupos de WhatsApp, pelo Instagram ou 
 - WhatsApp: https://chat.whatsapp.com/ISkSCIdDz4fBn6d61wQlJ5
 - Instagram: https://www.instagram.com/p/Da3AEOvkarp/
 - E-mail: appsdecarro@gmail.com
+## Fuentes del fork Tero Central Free
+
+Este repositorio incluye también el código fuente de la variante Tero, en `android-project/`, `jadx-decompiled/`, `apktool-decoded/` y `apktool-test-src/`. La guía de portabilidad está en `guia_modificacion.md`; la memoria del proyecto, en `memory.md`.
+
+La fuente de referencia para reconstruir la APK de prueba es `apktool-test-src/`. Con Apktool 2.11.0:
+
+```powershell
+java -jar apktool_2.11.0.jar b apktool-test-src -o build/TeroCentralFree-unsigned.apk
+```
+
+Firma localmente con una clave de desarrollo propia antes de instalar. No se incluyen APKs compiladas ni keystores privados.

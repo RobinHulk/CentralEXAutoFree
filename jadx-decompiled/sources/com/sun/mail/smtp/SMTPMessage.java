@@ -1,0 +1,146 @@
+package com.sun.mail.smtp;
+
+import java.io.InputStream;
+import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
+
+/* JADX INFO: loaded from: classes.dex */
+public class SMTPMessage extends MimeMessage {
+    public static final int NOTIFY_DELAY = 4;
+    public static final int NOTIFY_FAILURE = 2;
+    public static final int NOTIFY_NEVER = -1;
+    public static final int NOTIFY_SUCCESS = 1;
+    public static final int RETURN_FULL = 1;
+    public static final int RETURN_HDRS = 2;
+    private static final String[] returnOptionString = {null, "FULL", "HDRS"};
+    private boolean allow8bitMIME;
+    private String envelopeFrom;
+    private String extension;
+    private int notifyOptions;
+    private int returnOption;
+    private boolean sendPartial;
+    private String submitter;
+
+    public SMTPMessage(Session session) {
+        super(session);
+        this.notifyOptions = 0;
+        this.returnOption = 0;
+        this.sendPartial = false;
+        this.allow8bitMIME = false;
+        this.submitter = null;
+        this.extension = null;
+    }
+
+    public boolean getAllow8bitMIME() {
+        return this.allow8bitMIME;
+    }
+
+    public String getDSNNotify() {
+        int i2 = this.notifyOptions;
+        if (i2 == 0) {
+            return null;
+        }
+        if (i2 == -1) {
+            return "NEVER";
+        }
+        StringBuilder sb = new StringBuilder();
+        if ((this.notifyOptions & 1) != 0) {
+            sb.append("SUCCESS");
+        }
+        if ((this.notifyOptions & 2) != 0) {
+            if (sb.length() != 0) {
+                sb.append(',');
+            }
+            sb.append("FAILURE");
+        }
+        if ((this.notifyOptions & 4) != 0) {
+            if (sb.length() != 0) {
+                sb.append(',');
+            }
+            sb.append("DELAY");
+        }
+        return sb.toString();
+    }
+
+    public String getDSNRet() {
+        return returnOptionString[this.returnOption];
+    }
+
+    public String getEnvelopeFrom() {
+        return this.envelopeFrom;
+    }
+
+    public String getMailExtension() {
+        return this.extension;
+    }
+
+    public int getNotifyOptions() {
+        return this.notifyOptions;
+    }
+
+    public int getReturnOption() {
+        return this.returnOption;
+    }
+
+    public boolean getSendPartial() {
+        return this.sendPartial;
+    }
+
+    public String getSubmitter() {
+        return this.submitter;
+    }
+
+    public void setAllow8bitMIME(boolean z2) {
+        this.allow8bitMIME = z2;
+    }
+
+    public void setEnvelopeFrom(String str) {
+        this.envelopeFrom = str;
+    }
+
+    public void setMailExtension(String str) {
+        this.extension = str;
+    }
+
+    public void setNotifyOptions(int i2) {
+        if (i2 < -1 || i2 >= 8) {
+            throw new IllegalArgumentException("Bad return option");
+        }
+        this.notifyOptions = i2;
+    }
+
+    public void setReturnOption(int i2) {
+        if (i2 < 0 || i2 > 2) {
+            throw new IllegalArgumentException("Bad return option");
+        }
+        this.returnOption = i2;
+    }
+
+    public void setSendPartial(boolean z2) {
+        this.sendPartial = z2;
+    }
+
+    public void setSubmitter(String str) {
+        this.submitter = str;
+    }
+
+    public SMTPMessage(Session session, InputStream inputStream) {
+        super(session, inputStream);
+        this.notifyOptions = 0;
+        this.returnOption = 0;
+        this.sendPartial = false;
+        this.allow8bitMIME = false;
+        this.submitter = null;
+        this.extension = null;
+    }
+
+    public SMTPMessage(MimeMessage mimeMessage) {
+        super(mimeMessage);
+        this.notifyOptions = 0;
+        this.returnOption = 0;
+        this.sendPartial = false;
+        this.allow8bitMIME = false;
+        this.submitter = null;
+        this.extension = null;
+    }
+}

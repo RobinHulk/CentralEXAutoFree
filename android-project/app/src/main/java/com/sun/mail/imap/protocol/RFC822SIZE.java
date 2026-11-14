@@ -1,0 +1,14 @@
+package com.sun.mail.imap.protocol;
+
+/* JADX INFO: loaded from: classes.dex */
+public class RFC822SIZE implements Item {
+    static final char[] name = {'R', 'F', 'C', '8', '2', '2', '.', 'S', 'I', 'Z', 'E'};
+    public int msgno;
+    public long size;
+
+    public RFC822SIZE(FetchResponse fetchResponse) {
+        this.msgno = fetchResponse.getNumber();
+        fetchResponse.skipSpaces();
+        this.size = fetchResponse.readLong();
+    }
+}

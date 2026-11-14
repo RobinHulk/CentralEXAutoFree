@@ -1,6 +1,16 @@
 Chromium.apk
 
-# NUNCA publicar o mapa do R8: ele desfaz toda a ofuscação do APK, que existe justamente para
-# encarecer a descompilação por terceiros. Um mapping.txt aqui zera o esforço inteiro.
+# NUNCA publicar el mapa del R8: mapping.txt revierte la ofuscación del APK.
 mapping.txt
 *mapping*.txt
+
+.gradle/
+**/build/
+local.properties
+*.apk
+*.aab
+*.idsig
+*.keystore
+*.jks
+.env
+.env.*
