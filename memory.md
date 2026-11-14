@@ -115,7 +115,7 @@ Firmar el APK localmente con `apksigner` y la clave de depuración del equipo; n
 
 - Repositorio publicado: `https://github.com/RobinHulk/SapoCentralEXAutoFree` (rama `main`). El checkout de trabajo es `F:\dev\codex\Teru\TeroCentralFree`; el directorio raíz `F:\dev\codex\Teru` no es un repositorio Git.
 - La rama remota `main` conserva el historial y contenido que ya existía. Se agregó el árbol de fuentes de Tero y la documentación como historia integrada, sin force-push.
-- Último commit verificado en GitHub: `57fc325` (`Document Tero image resource links`). El commit `88392ac` agregó el árbol de fuentes y documentación Tero al repositorio existente.
+- La guía con los enlaces a las imágenes se publicó en `57fc325` (`Document Tero image resource links`); el árbol de fuentes y documentación se había integrado en `88392ac`. La memoria consolidada se publicó en `b71c4f7` (`Consolidate Tero project session memory`).
 - La guía de portabilidad está en `guia_modificacion.md`, tanto en la raíz del proyecto como en el repositorio. Ambas copias se sincronizaron. Incluye los cambios numerados y la finalidad de reproducirlos al portar una versión nueva.
 - Enlaces de recursos que quedaron en la guía:
   - Fondo de Home: `https://github.com/RobinHulk/SapoCentralEXAutoFree/blob/main/apktool-test-src/res/drawable-nodpi/sapo.png`
