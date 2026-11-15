@@ -18490,75 +18490,9 @@
 
     move-result v0
 
-    const-string v1, "1114"
-
-    if-eqz v0, :cond_1
-
-    invoke-virtual {p1, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
-    move-result p2
-
-    if-eqz p2, :cond_0
-
-    const-string p2, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-aa-1114.json"
+    const-string p2, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/connadaptor.json"
 
     invoke-static {p2}, Le/a;->G(Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object p2
-
-    goto :goto_0
-
-    :cond_0
-    const-string p2, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-aa.json"
-
-    invoke-static {p2}, Le/a;->G(Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object p2
-
-    goto :goto_0
-
-    :cond_1
-    const-string v0, "carplay"
-
-    invoke-virtual {p2, v0}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
-    move-result p2
-
-    if-eqz p2, :cond_2
-
-    const-string p2, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-carplay.json"
-
-    invoke-static {p2}, Le/a;->G(Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object p2
-
-    goto :goto_0
-
-    :cond_2
-    invoke-virtual {p1, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
-    move-result p2
-
-    if-eqz p2, :cond_3
-
-    const-string p2, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-1114.json"
-
-    invoke-static {p2}, Le/a;->G(Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object p2
-
-    goto :goto_0
-
-    :cond_3
-    const-string p2, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-1111.json"
-
-    const-string v0, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor.json"
-
-    filled-new-array {p2, v0}, [Ljava/lang/String;
-
-    move-result-object p2
-
-    invoke-static {p2}, Lw0/j;->T([Ljava/lang/Object;)Ljava/util/List;
 
     move-result-object p2
 

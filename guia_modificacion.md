@@ -42,6 +42,8 @@ La fuente de referencia actual es `ultimaFree78/apktool-test-src`. La variante m
 
 16. **Desactivar actualización automática por defecto.** En la última pantalla de ajustes, dejar apagada (`off`) la opción de actualización automática. Al portar, ubicar el `Switch` y su preferencia asociada, cambiar el valor predeterminado a `false` y confirmar que la interfaz aparezca apagada en una instalación limpia.
 
+17. **Feed de ConnAdaptor del fork.** La descarga del ConnAdaptor usa un único manifiesto para todas las variantes de central y modo: `https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/connadaptor.json`. El JSON debe publicar `md5` y `apkUrl`; para el APK actual `CAConnect.apk`, el MD5 es `e226ba28395f432d85951c10c4b2fdbe` y la URL es `https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/CAConnect.apk`. Al publicar una nueva variante, conservar el paquete `com.njda.adapter`, actualizar URL y MD5 y comprobar el modo elegido en el head unit.
+
 ## Validaciones pendientes al portar
 
 - Confirmar que la importación puede leer las preferencias originales en el head unit real y que se copian también ajustes distintos de los modos de conducción/regeneración.
