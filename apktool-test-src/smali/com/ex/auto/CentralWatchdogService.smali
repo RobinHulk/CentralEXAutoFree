@@ -2316,57 +2316,70 @@
 .end method
 
 .method public static final j(Lcom/ex/auto/CentralWatchdogService;)LT/A0;
-    .locals 5
+    .locals 6
 
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    sget-object v0, LT/q1;->a:[B
+    const-string v0, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/exsapocentral.json"
 
-    invoke-virtual {p0}, Lcom/ex/auto/CentralWatchdogService;->M()Landroid/content/SharedPreferences;
+    invoke-static {v0}, Lcom/ex/auto/MainActivity;->E0(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+    invoke-static {v0}, Lcom/ex/auto/MainActivity;->L0(Ljava/lang/String;)Ljava/lang/Long;
 
     move-result-object v1
 
-    const-string v2, "getPackageName(...)"
+    if-eqz v1, :cond_0
 
-    invoke-static {v1, v2}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v2
-
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
-
-    move-result-object v3
-
-    const/4 v4, 0x0
-
-    invoke-virtual {v2, v3, v4}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/content/pm/PackageInfo;->getLongVersionCode()J
+    invoke-virtual {v1}, Ljava/lang/Long;->longValue()J
 
     move-result-wide v2
 
-    invoke-static {p0, v0, v1, v2, v3}, LT/q1;->a(Landroid/content/ContextWrapper;Landroid/content/SharedPreferences;Ljava/lang/String;J)LT/p1;
+    const-string v1, "versionName"
 
-    move-result-object p0
+    invoke-static {v0, v1}, Lcom/ex/auto/MainActivity;->M0(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    new-instance v0, LT/A0;
+    move-result-object v4
 
-    iget-object v1, p0, LT/p1;->b:Ljava/lang/String;
+    if-nez v4, :cond_1
 
-    iget-object v2, p0, LT/p1;->c:Ljava/lang/String;
+    invoke-static {v2, v3}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
-    iget-wide v3, p0, LT/p1;->a:J
+    move-result-object v4
 
-    invoke-direct {v0, v3, v4, v1, v2}, LT/A0;-><init>(JLjava/lang/String;Ljava/lang/String;)V
+    :cond_1
+    const-string v1, "apkUrl"
 
-    return-object v0
+    invoke-static {v0, v1}, Lcom/ex/auto/MainActivity;->M0(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v5
+
+    if-eqz v5, :cond_2
+
+    new-instance v1, LT/A0;
+
+    invoke-direct {v1, v2, v3, v4, v5}, LT/A0;-><init>(JLjava/lang/String;Ljava/lang/String;)V
+
+    return-object v1
+
+    :cond_2
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "update.json sem apkUrl"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "update.json sem versionCode"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
 .end method
 
 .method public static final k(Lcom/ex/auto/CentralWatchdogService;)Ljava/lang/String;

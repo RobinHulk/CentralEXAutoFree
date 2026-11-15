@@ -3230,13 +3230,13 @@ public class MainActivity extends AbstractActivityC0210j {
     }
 
     public final void X1() {
-        String string = B0().getString("update_channel", "stable");
+        B0().edit().putString("update_channel", "stable").apply();
         a aVar = this.f2384t;
         if (aVar == null) {
             f.h("binding");
             throw null;
         }
-        aVar.x1.check(f.a(string, "experimental") ? R.id.rbUpdateChannelExperimental : R.id.rbUpdateChannelStable);
+        aVar.x1.check(R.id.rbUpdateChannelStable);
         a aVar2 = this.f2384t;
         if (aVar2 == null) {
             f.h("binding");
@@ -26761,27 +26761,7 @@ public class MainActivity extends AbstractActivityC0210j {
     }
 
     public final C0119p3 s0() throws IOException {
-        String str;
-        Y0 y0 = Y0.f854a;
-        SharedPreferences sharedPreferencesB0 = B0();
-        f.d(sharedPreferencesB0, "<get-prefs>(...)");
-        if (!Y0.h(sharedPreferencesB0)) {
-            byte[] bArr = AbstractC0123q1.f1105a;
-            SharedPreferences sharedPreferencesB1 = B0();
-            f.d(sharedPreferencesB1, "<get-prefs>(...)");
-            String packageName = getPackageName();
-            f.d(packageName, "getPackageName(...)");
-            C0117p1 c0117p1A = AbstractC0123q1.a(this, sharedPreferencesB1, packageName, e0());
-            return new C0119p3(c0117p1A.f1089a, c0117p1A.b, c0117p1A.f1090c, null);
-        }
-        SharedPreferences sharedPreferencesB2 = B0();
-        f.d(sharedPreferencesB2, "<get-prefs>(...)");
-        if (Y0.h(sharedPreferencesB2)) {
-            str = "https://raw.githubusercontent.com/swimapps/Outros/main/update-ban.json";
-        } else {
-            str = f.a(sharedPreferencesB2.getString("update_channel", "stable"), "experimental") ? "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/exsapocentral-experimental.json" : "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/exsapocentral.json";
-        }
-        String strE0 = E0(str);
+        String strE0 = E0("https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/exsapocentral.json");
         Long lL0 = L0(strE0);
         if (lL0 == null) {
             throw new IllegalStateException("update.json sem versionCode");

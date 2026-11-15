@@ -11,8 +11,8 @@ android {
         minSdkVersion 28
         //noinspection ExpiringTargetSdkVersion,ExpiredTargetSdkVersion
         targetSdkVersion 29
-        versionCode 679
-        versionName "2.19.78-Tero5"
+        versionCode 681
+        versionName "2.19.78-Tero7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -34,11 +34,13 @@ La fuente de referencia actual es `ultimaFree78/apktool-test-src`. La variante m
 
 12. **Pantalla Apps: corrección del cierre.** Se corrigió la referencia de recurso inválida que provocaba `Resources$NotFoundException` al abrir Apps y se apuntaron ambos adaptadores al layout existente. La pantalla Apps se abrió correctamente después del arreglo.
 
-13. **Actualización de versión sin el antiguo aviso de vencimiento.** El fork conserva su flujo normal para otras funciones, pero se retiró la validación que bloqueaba el inicio por la caducidad de la versión original. Antes de portar, revisar las rutinas de actualización para distinguir el aviso de expiración de las funciones de descarga que todavía se necesiten.
+13. **Actualizador propio, canal estable fijo y sin selector de canal.** Se ocultó la opción “Estable/Experimental” de la última pantalla y se fuerza `update_channel=stable`, también para instalaciones que antes habían guardado `experimental`. La comprobación manual y el `CentralWatchdogService` consultan siempre `https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/exsapocentral.json`. Ese manifiesto debe contener `versionCode`, `versionName`, `apkUrl` y `sha256`; el `apkUrl` apunta a `https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/TeroCentralFree.apk`. Al publicar una versión, subir el APK firmado con la misma clave y actualizar el manifiesto con la versión y SHA-256 reales. Se retiró además la ruta de actualización del servicio firmado y el manifiesto de bloqueo antiguo para que los dos caminos de actualización usen el feed del fork.
 
-14. **Construcción y entrega del APK.** La fuente decompilada se recompila con Apktool 2.11 y Java 23 y luego se firma con la clave local de desarrollo. El APK Tero5 quedó en `ultimaFree78/apktool-test/TeroCentralFree-2.19.78-Tero5.apk`. La clave original no está en el repositorio, por lo que no es posible producir una firma idéntica a la de EX Sapo Central.
+14. **Eliminación del bloqueo por vencimiento.** Se retiró la validación que bloqueaba el inicio por la caducidad de la versión original. Al portar, mantener separado ese bloqueo del flujo de actualización propio descrito en el punto 13.
 
-15. **Desactivar actualización automática por defecto.** En la última pantalla de ajustes, dejar apagada (`off`) la opción de actualización automática. Al portar, ubicar el `Switch` y su preferencia asociada, cambiar el valor predeterminado a `false` y confirmar que la interfaz aparezca apagada en una instalación limpia.
+15. **Construcción y entrega del APK.** La fuente decompilada se recompila con Apktool 2.11 y Java 23 y luego se firma con la clave local de desarrollo. La versión actual de esta sesión es `2.19.78-Tero7`, `versionCode` `681`; el APK local está en `ultimaFree78/apktool-test/TeroCentralFree-2.19.78-Tero7.apk`. La clave original no está en el repositorio, por lo que no es posible producir una firma idéntica a la de EX Sapo Central.
+
+16. **Desactivar actualización automática por defecto.** En la última pantalla de ajustes, dejar apagada (`off`) la opción de actualización automática. Al portar, ubicar el `Switch` y su preferencia asociada, cambiar el valor predeterminado a `false` y confirmar que la interfaz aparezca apagada en una instalación limpia.
 
 ## Validaciones pendientes al portar
 

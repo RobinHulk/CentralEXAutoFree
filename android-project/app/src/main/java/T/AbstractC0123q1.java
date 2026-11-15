@@ -50,7 +50,7 @@ public abstract class AbstractC0123q1 {
         if (O0.j.E0(strB) || O0.j.E0(strB2)) {
             throw new IllegalStateException("identidade do aparelho indisponivel (xdsn/vin)");
         }
-        String str2 = I0.f.a(sharedPreferences.getString("update_channel", "stable"), "experimental") ? "experimental" : "stable";
+        String str2 = "stable";
         JSONObject jSONObject = new JSONObject();
         jSONObject.put("xdsn", strB);
         jSONObject.put("vin", strB2);

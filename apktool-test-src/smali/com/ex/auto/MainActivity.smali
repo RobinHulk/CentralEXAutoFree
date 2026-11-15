@@ -10481,13 +10481,19 @@
 
     move-result-object v0
 
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object v0
+
     const-string v1, "update_channel"
 
     const-string v2, "stable"
 
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
 
     iget-object v1, p0, Lcom/ex/auto/MainActivity;->t:LU/a;
 
@@ -10497,22 +10503,7 @@
 
     if-eqz v1, :cond_3
 
-    const-string v4, "experimental"
-
-    invoke-static {v0, v4}, LI0/f;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    const v0, 0x7f0901f6
-
-    goto :goto_0
-
-    :cond_0
     const v0, 0x7f0901f7
-
-    :goto_0
     iget-object v1, v1, LU/a;->x1:Landroid/widget/RadioGroup;
 
     invoke-virtual {v1, v0}, Landroid/widget/RadioGroup;->check(I)V
@@ -19788,63 +19779,8 @@
 .method public final s0()LT/p3;
     .locals 8
 
-    sget-object v0, LT/Y0;->a:LT/Y0;
+    const-string v0, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/exsapocentral.json"
 
-    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->B0()Landroid/content/SharedPreferences;
-
-    move-result-object v0
-
-    const-string v1, "<get-prefs>(...)"
-
-    invoke-static {v0, v1}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
-    invoke-static {v0}, LT/Y0;->h(Landroid/content/SharedPreferences;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_5
-
-    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->B0()Landroid/content/SharedPreferences;
-
-    move-result-object v0
-
-    invoke-static {v0, v1}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
-    invoke-static {v0}, LT/Y0;->h(Landroid/content/SharedPreferences;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_0
-
-    const-string v0, "https://raw.githubusercontent.com/swimapps/Outros/main/update-ban.json"
-
-    goto :goto_0
-
-    :cond_0
-    const-string v1, "update_channel"
-
-    const-string v2, "stable"
-
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v1, "experimental"
-
-    invoke-static {v0, v1}, LI0/f;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    const-string v0, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/exsapocentral-experimental.json"
-
-    goto :goto_0
-
-    :cond_1
-    const-string v0, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/exsapocentral.json"
-
-    :goto_0
     invoke-static {v0}, Lcom/ex/auto/MainActivity;->E0(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
@@ -19914,46 +19850,6 @@
 
     throw v0
 
-    :cond_5
-    sget-object v0, LT/q1;->a:[B
-
-    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->B0()Landroid/content/SharedPreferences;
-
-    move-result-object v0
-
-    invoke-static {v0, v1}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
-
-    move-result-object v1
-
-    const-string v2, "getPackageName(...)"
-
-    invoke-static {v1, v2}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
-    invoke-virtual {p0}, Lcom/ex/auto/MainActivity;->e0()J
-
-    move-result-wide v2
-
-    invoke-static {p0, v0, v1, v2, v3}, LT/q1;->a(Landroid/content/ContextWrapper;Landroid/content/SharedPreferences;Ljava/lang/String;J)LT/p1;
-
-    move-result-object v0
-
-    new-instance v7, LT/p3;
-
-    iget-object v4, v0, LT/p1;->b:Ljava/lang/String;
-
-    iget-object v5, v0, LT/p1;->c:Ljava/lang/String;
-
-    iget-wide v2, v0, LT/p1;->a:J
-
-    const/4 v6, 0x0
-
-    move-object v1, v7
-
-    invoke-direct/range {v1 .. v6}, LT/p3;-><init>(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-
-    return-object v7
 .end method
 
 .method public final s1()V
