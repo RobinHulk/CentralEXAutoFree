@@ -364,7 +364,7 @@
 
     invoke-static {v9, v6}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string v10, "https://github.com/Timoteohss/geelybattery_releases/releases/latest/download/latest.json"
+    const-string v10, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/geelybattery.json"
 
     const-string v11, "GeelyBattery-install.apk"
 
