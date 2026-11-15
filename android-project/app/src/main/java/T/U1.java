@@ -509,7 +509,7 @@ public final /* synthetic */ class U1 implements Runnable {
                 }
                 if (strA0 != null && lValueOf != null) {
                     try {
-                        C0077i3 c0077i3N0 = MainActivity.n0("https://raw.githubusercontent.com/swimapps/Outros/main/dualdashcam.json");
+                        C0077i3 c0077i3N0 = MainActivity.n0("https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/dualdashcam.json");
                         long jLongValue = lValueOf.longValue();
                         str4 = "Update";
                         long j2 = c0077i3N0.f1006a;

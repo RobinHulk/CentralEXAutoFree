@@ -406,7 +406,7 @@
 
     invoke-static {v9, v6}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string v10, "https://raw.githubusercontent.com/swimapps/Outros/main/eisapo.json"
+    const-string v10, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/eisapo.json"
 
     const-string v11, "EiSapo-install.apk"
 
@@ -448,7 +448,7 @@
 
     invoke-static {v9, v6}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string v10, "https://raw.githubusercontent.com/swimapps/Outros/main/dualdashcam.json"
+    const-string v10, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/dualdashcam.json"
 
     const-string v11, "DualDashcam-install.apk"
 
@@ -490,7 +490,7 @@
 
     invoke-static {v9, v6}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string v10, "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptorlogger.json"
+    const-string v10, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/connadaptorlogger.json"
 
     const-string v11, "ConnAdaptorLogger-install.apk"
 
@@ -532,7 +532,7 @@
 
     invoke-static {v9, v6}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string v10, "https://raw.githubusercontent.com/swimapps/Outros/main/chromium.json"
+    const-string v10, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/chromium.json"
 
     const-string v11, "Chromium-install.apk"
 
@@ -588,7 +588,7 @@
 
     invoke-static {v8, v5}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string v9, "https://raw.githubusercontent.com/swimapps/Outros/main/filemanager.json"
+    const-string v9, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/filemanager.json"
 
     const-string v10, "AmazeFileManager-install.apk"
 
@@ -644,7 +644,7 @@
 
     invoke-static {v7, v4}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string v8, "https://raw.githubusercontent.com/swimapps/Outros/main/firefox.json"
+    const-string v8, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/firefox.json"
 
     const-string v9, "Firefox-install.apk"
 
@@ -700,7 +700,7 @@
 
     invoke-static {v6, v1}, LI0/f;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    const-string v7, "https://raw.githubusercontent.com/swimapps/Outros/main/microg.json"
+    const-string v7, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/microg.json"
 
     const-string v8, "MicroG-install.apk"
 

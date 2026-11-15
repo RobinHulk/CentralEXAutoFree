@@ -102,7 +102,7 @@ public final /* synthetic */ class F2 implements DialogInterface.OnClickListener
                                     I0.f.h("binding");
                                     throw null;
                                 }
-                                mainActivity2.G0("https://raw.githubusercontent.com/swimapps/Outros/main/dualdashcam.json", "DualDashcam-install.apk", "br.com.central.dualdashcam", button, button2, aVar.B2);
+                                mainActivity2.G0("https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/dualdashcam.json", "DualDashcam-install.apk", "br.com.central.dualdashcam", button, button2, aVar.B2);
                             } else {
                                 continue;
                             }

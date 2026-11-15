@@ -26519,13 +26519,7 @@ public class MainActivity extends AbstractActivityC0210j {
         int[] iArr = AbstractC0121q.f1100a;
         f.e(str2, "modo");
         f.e(str, "versao");
-        if (str2.equals("aa")) {
-            listG = str.equals("1114") ? AbstractC0201a.G("https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-aa-1114.json") : AbstractC0201a.G("https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-aa.json");
-        } else if (str2.equals("carplay")) {
-            listG = AbstractC0201a.G("https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-carplay.json");
-        } else {
-            listG = str.equals("1114") ? AbstractC0201a.G("https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-1114.json") : j.T("https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor-1111.json", "https://raw.githubusercontent.com/swimapps/CentralEXAuto/main/connadaptor.json");
-        }
+        listG = AbstractC0201a.G("https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/connadaptor.json");
         Exception e2 = null;
         boolean z2 = true;
         for (String str3 : listG) {
