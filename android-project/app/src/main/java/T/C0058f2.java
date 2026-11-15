@@ -34,7 +34,7 @@ public final /* synthetic */ class C0058f2 implements RadioGroup.OnCheckedChange
         switch (this.f959a) {
             case 0:
                 int i7 = MainActivity.u0;
-                mainActivity.B0().edit().putString("update_channel", i2 == R.id.rbUpdateChannelExperimental ? "experimental" : "stable").apply();
+                mainActivity.B0().edit().putString("update_channel", "stable").apply();
                 return;
             case 1:
                 if (mainActivity.f2379o0) {

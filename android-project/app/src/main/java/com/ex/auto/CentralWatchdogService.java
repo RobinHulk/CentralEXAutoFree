@@ -833,12 +833,21 @@ public final class CentralWatchdogService extends Service {
 
     public static final A0 j(CentralWatchdogService centralWatchdogService) {
         centralWatchdogService.getClass();
-        byte[] bArr = AbstractC0123q1.f1105a;
-        SharedPreferences sharedPreferencesM = centralWatchdogService.M();
-        String packageName = centralWatchdogService.getPackageName();
-        f.d(packageName, "getPackageName(...)");
-        C0117p1 c0117p1A = AbstractC0123q1.a(centralWatchdogService, sharedPreferencesM, packageName, centralWatchdogService.getPackageManager().getPackageInfo(centralWatchdogService.getPackageName(), 0).getLongVersionCode());
-        return new A0(c0117p1A.f1089a, c0117p1A.b, c0117p1A.f1090c);
+        String strE0 = MainActivity.E0("https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/exsapocentral.json");
+        Long lL0 = MainActivity.L0(strE0);
+        if (lL0 == null) {
+            throw new IllegalStateException("update.json sem versionCode");
+        }
+        long jLongValue = lL0.longValue();
+        String strM0 = MainActivity.M0(strE0, "versionName");
+        if (strM0 == null) {
+            strM0 = String.valueOf(jLongValue);
+        }
+        String strM1 = MainActivity.M0(strE0, "apkUrl");
+        if (strM1 == null) {
+            throw new IllegalStateException("update.json sem apkUrl");
+        }
+        return new A0(jLongValue, strM0, strM1);
     }
 
     public static final String k(CentralWatchdogService centralWatchdogService) {

@@ -240,27 +240,7 @@
 
     if-nez v9, :cond_8
 
-    const-string v9, "update_channel"
-
     const-string v10, "stable"
-
-    move-object/from16 v11, p1
-
-    invoke-interface {v11, v9, v10}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v9
-
-    const-string v12, "experimental"
-
-    invoke-static {v9, v12}, LI0/f;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    move-result v9
-
-    if-eqz v9, :cond_1
-
-    move-object v10, v12
-
-    :cond_1
     new-instance v9, Lorg/json/JSONObject;
 
     invoke-direct {v9}, Lorg/json/JSONObject;-><init>()V

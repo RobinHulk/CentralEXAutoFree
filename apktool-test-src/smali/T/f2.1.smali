@@ -469,18 +469,8 @@
     :pswitch_2
     sget p1, Lcom/ex/auto/MainActivity;->u0:I
 
-    const p1, 0x7f0901f6
-
-    if-ne p2, p1, :cond_17
-
-    const-string p1, "experimental"
-
-    goto :goto_d
-
-    :cond_17
     const-string p1, "stable"
 
-    :goto_d
     invoke-virtual {v2}, Lcom/ex/auto/MainActivity;->B0()Landroid/content/SharedPreferences;
 
     move-result-object p2
