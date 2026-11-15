@@ -38,11 +38,13 @@ La fuente de referencia actual es `ultimaFree78/apktool-test-src`. La variante m
 
 14. **Eliminación del bloqueo por vencimiento.** Se retiró la validación que bloqueaba el inicio por la caducidad de la versión original. Al portar, mantener separado ese bloqueo del flujo de actualización propio descrito en el punto 13.
 
-15. **Construcción y entrega del APK.** La fuente decompilada se recompila con Apktool 2.11 y Java 23 y luego se firma con la clave local de desarrollo. La versión actual de esta sesión es `2.19.78-Tero7`, `versionCode` `681`; el APK local está en `ultimaFree78/apktool-test/TeroCentralFree-2.19.78-Tero7.apk`. La clave original no está en el repositorio, por lo que no es posible producir una firma idéntica a la de EX Sapo Central.
+15. **Construcción y entrega del APK.** La fuente decompilada se recompila con Apktool 2.11 y Java 23 y luego se firma con la clave local de desarrollo. La versión actual de esta sesión es `2.19.78-Tero10`, `versionCode` `684`; el APK local está en `ultimaFree78/apktool-test/TeroCentralFree-2.19.78-Tero10.apk`. La clave original no está en el repositorio, por lo que no es posible producir una firma idéntica a la de EX Sapo Central.
 
 16. **Desactivar actualización automática por defecto.** En la última pantalla de ajustes, dejar apagada (`off`) la opción de actualización automática. Al portar, ubicar el `Switch` y su preferencia asociada, cambiar el valor predeterminado a `false` y confirmar que la interfaz aparezca apagada en una instalación limpia.
 
 17. **Feed de ConnAdaptor del fork.** La descarga del ConnAdaptor usa un único manifiesto para todas las variantes de central y modo: `https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/connadaptor.json`. El JSON debe publicar `md5` y `apkUrl`; para el APK actual `CAConnect.apk`, el MD5 es `e226ba28395f432d85951c10c4b2fdbe` y la URL es `https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/CAConnect.apk`. Al publicar una nueva variante, conservar el paquete `com.njda.adapter`, actualizar URL y MD5 y comprobar el modo elegido en el head unit.
+
+18. **Manifiestos del catálogo de Apps en el feed propio.** Las rutas de actualización de Ei Sapo, DualDashcam, ConnAdaptor Logger, Chromium, Amaze File Manager, Firefox y microG se deben consultar en `https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/` usando sus nombres de JSON (`eisapo.json`, `dualdashcam.json`, `connadaptorlogger.json`, `chromium.json`, `filemanager.json`, `firefox.json`, `microg.json`). El actualizador de DualDashcam y el verificador de dependencias también deben usar el manifiesto RobinHulk. Al portar, mantener un único propietario de feed y validar que cada manifiesto exista y que su `apkUrl` responda.
 
 ## Validaciones pendientes al portar
 

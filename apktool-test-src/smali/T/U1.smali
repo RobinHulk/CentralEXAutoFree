@@ -1678,7 +1678,7 @@
     if-eqz v0, :cond_13
 
     :try_start_e
-    const-string v12, "https://raw.githubusercontent.com/swimapps/Outros/main/dualdashcam.json"
+    const-string v12, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/dualdashcam.json"
 
     invoke-static {v12}, Lcom/ex/auto/MainActivity;->n0(Ljava/lang/String;)LT/i3;
 

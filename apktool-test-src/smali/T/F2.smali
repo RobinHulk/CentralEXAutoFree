@@ -200,7 +200,7 @@
 
     const-string v4, "br.com.central.dualdashcam"
 
-    const-string v2, "https://raw.githubusercontent.com/swimapps/Outros/main/dualdashcam.json"
+    const-string v2, "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/dualdashcam.json"
 
     move-object v1, p1
 
