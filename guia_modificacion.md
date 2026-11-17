@@ -4,7 +4,7 @@
 
 Esta lista documenta los cambios que se aplicaron al fork de EX Sapo Central para poder volver a reproducirlos al decompilar y adaptar una versión nueva. Debe usarse como checklist de portabilidad: revisar cada punto contra el código nuevo, reaplicar el cambio correspondiente y probarlo en el emulador y, cuando dependa de funciones del vehículo, en el head unit.
 
-La fuente de referencia actual es `ultimaFree78/apktool-test-src`. La variante más reciente construida durante este trabajo es `ultimaFree78/apktool-test/TeroCentralFree-2.19.78-Tero5.apk`.
+La fuente de referencia para los builds es `TeroCentralFree/apktool-test-src`. Los artefactos generados se guardan en `TeroCentralFree/apktool-test/`.
 
 ## Cambios aplicados
 
@@ -38,7 +38,7 @@ La fuente de referencia actual es `ultimaFree78/apktool-test-src`. La variante m
 
 14. **Eliminación del bloqueo por vencimiento.** Se retiró la validación que bloqueaba el inicio por la caducidad de la versión original. Al portar, mantener separado ese bloqueo del flujo de actualización propio descrito en el punto 13.
 
-15. **Construcción y entrega del APK.** La fuente decompilada se recompila con Apktool 2.11 y Java 23 y luego se firma con la clave local de desarrollo. La versión actual de esta sesión es `2.19.78-Tero11`, `versionCode` `685`; el APK local está en `ultimaFree78/apktool-test/TeroCentralFree-2.19.78-Tero11.apk`. La clave original no está en el repositorio, por lo que no es posible producir una firma idéntica a la de EX Sapo Central.
+15. **Construcción y entrega del APK.** La fuente decompilada se recompila con Apktool 2.11 y Java 23 y luego se firma con la clave local de desarrollo. Los builds se toman de `TeroCentralFree/apktool-test-src` y se guardan en `TeroCentralFree/apktool-test/`. La versión actual es `2.19.89`, `versionCode` `686`, sin sufijos en `versionName`. La clave original no está en el repositorio, por lo que no es posible producir una firma idéntica a la de EX Sapo Central.
 
 16. **Desactivar actualización automática por defecto.** En la última pantalla de ajustes, dejar apagada (`off`) la opción de actualización automática. Al portar, ubicar el `Switch` y su preferencia asociada, cambiar el valor predeterminado a `false` y confirmar que la interfaz aparezca apagada en una instalación limpia.
 

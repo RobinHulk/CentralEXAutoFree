@@ -60,10 +60,14 @@ O desenvolvedor pode ser contactado pelos grupos de WhatsApp, pelo Instagram ou 
 
 Este repositorio incluye también el código fuente de la variante Tero, en `android-project/`, `jadx-decompiled/`, `apktool-decoded/` y `apktool-test-src/`. La guía de portabilidad está en `guia_modificacion.md`; la memoria del proyecto, en `memory.md`.
 
-La fuente de referencia para reconstruir la APK de prueba es `apktool-test-src/`. Con Apktool 2.11.0:
+La fuente canónica para reconstruir la APK es `apktool-test-src/`; los APK generados se guardan en `apktool-test/`. El build local actual es `2.19.89` (`versionCode` 686). Apktool 2.11.0:
 
 ```powershell
-java -jar apktool_2.11.0.jar b apktool-test-src -o build/TeroCentralFree-unsigned.apk
+$env:JAVA_HOME='C:\Program Files\Java\jdk-23'
+$env:PATH="$env:JAVA_HOME\bin;$env:PATH"
+java.exe -jar 'F:\dev\codex\Teru\ultimaFree78\tools\apktool\apktool_2.11.0.jar' b `
+  'F:\dev\codex\Teru\TeroCentralFree\apktool-test-src' `
+  -o 'F:\dev\codex\Teru\TeroCentralFree\apktool-test\TeroCentralFree-2.19.89-unsigned.apk' --force-all
 ```
 
 El proyecto Android Studio requiere Android SDK 35 y Android Gradle Plugin 8.7.2. Configura `local.properties` en tu equipo; este archivo se excluye del control de versiones. Firma el APK localmente con una clave de desarrollo propia. No se incluyen claves privadas ni APKs compiladas en el árbol de fuentes.
