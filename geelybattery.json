@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "versionName": "0.29.0",
+  "versionCode": 783,
+  "packageName": "com.timhss.geelybattery",
+  "apkUrl": "https://raw.githubusercontent.com/RobinHulk/CentralEXAutoFree/main/GeelyBattery.apk",
+  "sha256": "a82897ba929791ff7a81d8224d09b3a34b66295ecc98a527c3317abfcf6a8486",
+  "sizeBytes": 24948312,
+  "requiresReflash": false
+}
